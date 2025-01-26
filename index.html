@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valentine's Website</title>
+    <style>
+        body {
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #ffe4e1, #ffc1cc);
+            color: #d63384;
+        }
+        h1 {
+            color: #ff69b4;
+            margin-bottom: 20px;
+        }
+        .container {
+            padding: 20px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            margin: 10px;
+            cursor: pointer;
+            background-color: #ffb6c1;
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+        button:hover {
+            background-color: #ff69b4;
+            transform: translateY(-2px);
+        }
+        .hidden {
+            display: none;
+        }
+        .image-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+        }
+        .image-grid img {
+            width: 180px;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 15px;
+            border: 3px solid transparent;
+            transition: transform 0.2s ease, border-color 0.3s ease;
+        }
+        .image-grid img:hover {
+            transform: scale(1.1);
+            border-color: #ff69b4;
+        }
+        .checkbox input[type="checkbox"] {
+            display: none;
+        }
+        .checkbox input[type="checkbox"]:checked + img {
+            border-color: #d63384;
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+    <div id="steps">
+        <div class="container" data-step="1">
+            <h1>Will you be my Valentine?</h1>
+            <button onclick="handleNo()">No</button>
+            <button onclick="nextStep()">Yes</button>
+        </div>
+
+        <div class="container hidden" data-step="2">
+            <img src="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExN2w0aXB1eGJrNXh5MHZzcDR4ZzQzazE0aGdta2t1Z3Voa3VzaXEwYiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/J2WQhnfK2WuUE/giphy.gif" alt="Valentine GIF">
+            <br>
+            <button onclick="nextStep()">Continue</button>
+        </div>
+
+        <div class="container hidden" data-step="3">
+            <h1>When are you free?</h1>
+            <input type="date" id="datePicker">
+            <br><br>
+            <button onclick="nextStep()">Continue</button>
+        </div>
+
+        <div class="container hidden" data-step="4">
+            <h1>What do you want to eat?</h1>
+            <div class="image-grid">
+                <label class="checkbox">
+                    <input type="checkbox" value="sushi">
+                    <img src="https://i.pinimg.com/736x/1d/a4/f2/1da4f2ca6b12e963f244b9a1f5ae112e.jpg" alt="Sushi">
+                </label>
+                <label class="checkbox">
+                    <input type="checkbox" value="pizza">
+                    <img src="https://i.pinimg.com/736x/c9/20/f2/c920f22d57c3422b934ba631d28e0911.jpg" alt="Pizza">
+                </label>
+                <label class="checkbox">
+                    <input type="checkbox" value="restaurant">
+                    <img src="https://i.pinimg.com/736x/5d/28/31/5d2831c6a8bc54fa923619fa43224c6c.jpg" alt="Restaurant">
+                </label>
+                <label class="checkbox">
+                    <input type="checkbox" value="doener">
+                    <img src="https://i.pinimg.com/736x/b7/90/5e/b7905e451df5a327d6c0fd5a7bc0193a.jpg" alt="Döner">
+                </label>
+                <label class="checkbox">
+                    <input type="checkbox" value="steak">
+                    <img src="https://i.pinimg.com/736x/48/eb/b7/48ebb768778944678259f95fbf8e2e67.jpg" alt="Steak">
+                </label>
+            </div>
+            <button onclick="nextStep()">Continue</button>
+        </div>
+
+        <div class="container hidden" data-step="5">
+            <h1>Dessert</h1>
+            <div class="image-grid">
+                <label class="checkbox">
+                    <input type="checkbox" value="cinnamonrolls">
+                    <img src="https://i.pinimg.com/736x/a8/58/6d/a8586dbe6d0fd61b09f3bfc4e0067955.jpg" alt="Cinnamon Rolls">
+                </label>
+                <label class="checkbox">
+                    <input type="checkbox" value="strawberries">
+                    <img src="https://i.pinimg.com/736x/cb/04/0c/cb040c65d5396cd3ae0b060bd97590a0.jpg" alt="Strawberries">
+                </label>
+                <label class="checkbox">
+                    <input type="checkbox" value="cookies">
+                    <img src="https://i.pinimg.com/736x/66/fd/b2/66fdb2495a09fa1267101d00ce3da485.jpg" alt="Cookies">
+                </label>
+                <label class="checkbox">
+                    <input type="checkbox" value="tiramisu">
+                    <img src="https://i.pinimg.com/736x/92/9b/af/929baf1cdf7baf01344e56dda726ee67.jpg" alt="Tiramisu">
+                </label>
+                <label class="checkbox">
+                    <input type="checkbox" value="churros">
+                    <img src="https://i.pinimg.com/736x/14/21/7a/14217a16d8f610887691c07b63f0aff3.jpg" alt="Churros">
+                </label>
+            </div>
+            <button onclick="nextStep()">Continue</button>
+        </div>
+
+        <div class="container hidden" data-step="6">
+            <h1>Drinks</h1>
+            <div class="image-grid">
+                <label class="checkbox">
+                    <input type="checkbox" value="cocktail">
+                    <img src="https://i.pinimg.com/736x/af/2a/49/af2a49fc5bb6f49d435bea4fb7c233bd.jpg" alt="Cocktail">
+                </label>
+                <label class="checkbox">
+                    <input type="checkbox" value="wine">
+                    <img src="https://i.pinimg.com/736x/c4/88/4d/c4884d8db638147f35defb592e10b6d5.jpg" alt="Wine">
+                </label>
+                <label class="checkbox">
+                    <input type="checkbox" value="coke">
+                    <img src="https://i.pinimg.com/736x/f6/8c/4a/f68c4a27e526d759d9686f7f78a458e2.jpg" alt="Coke">
+                </label>
+                <label class="checkbox">
+                    <input type="checkbox" value="water">
+                    <img src="https://i.pinimg.com/736x/36/5b/78/365b78b7463c11875514c641f1b2909d.jpg" alt="Water">
+                </label>
+                <label class="checkbox">
+                    <input type="checkbox" value="fanta">
+                    <img src="https://i.pinimg.com/736x/ef/a6/72/efa672a7691f03d8f433bc70cf088475.jpg" alt="Fanta">
+                </label>
+            </div>
+            <button onclick="finalSubmit()">Finish</button>
+        </div>
+    </div>
+
+    <script>
+        let currentStep = 1;
+        const totalSteps = 6;
+
+        function showStep(step) {
+            document.querySelectorAll('[data-step]').forEach(el => {
+                el.classList.add('hidden');
+            });
+            document.querySelector(`[data-step="${step}"]`).classList.remove('hidden');
+        }
+
+        function nextStep() {
+            if (currentStep === 3) {
+                const date = document.getElementById('datePicker').value;
+                if (!date) {
+                    alert('Please select a date!');
+                    return;
+                }
+                sendDataToDB({ date });
+            } else if ([4, 5, 6].includes(currentStep)) {
+                const selectedImages = Array.from(document.querySelectorAll(`[data-step="${currentStep}"] input[type="checkbox"]:checked`)).map(checkbox => checkbox.value);
+                if (selectedImages.length === 0) {
+                    alert('Please select at least one option!');
+                    return;
+                }
+                sendDataToDB({ selectedImages });
+            }
+
+            if (currentStep < totalSteps) {
+                currentStep++;
+                showStep(currentStep);
+            }
+        }
+
+        function handleNo() {
+            window.open('https://de.wikipedia.org/wiki/Apfel', '_blank');
+        }
+
+        function finalSubmit() {
+            alert('Thank you! All data has been submitted.');
+        }
+
+        function sendDataToDB(data) {
+            fetch('/api/save', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data)
+            }).then(res => res.json()).then(console.log).catch(console.error);
+        }
+
+        // Initialize the first step
+        showStep(currentStep);
+    </script>
+</body>
+</html>
